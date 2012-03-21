@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="reset.css" rel="stylesheet" type="text/css">
+	<style type="text/css">
+		#affbar-opened {
+			z-index: 2;
+			height: 35px;
+			width: 100%;
+			position: absolute;
+			top: -38px;
+			left: 0;
+	
+			background-color: red;
+			border-bottom:3px solid white;
+			-webkit-box-shadow: 0px 2px 0px 0px rgba(1, 1, 1, .3);
+			-moz-box-shadow: 0px 2px 0px 0px rgba(1, 1, 1, .3);
+			box-shadow: 0px 2px 0px 0px rgba(1, 1, 1, .3);
+		}
+		#affbar-closed {
+			z-index: 1;
+			height: 33px;
+			width: 100px;
+			position: absolute;
+			top: -3px;
+			right: 200px;
+			background-color: red;
+			border:3px solid white;
+			-webkit-border-bottom-right-radius: 5px;
+			-webkit-border-bottom-left-radius: 5px;
+			-moz-border-radius-bottomright: 5px;
+			-moz-border-radius-bottomleft: 5px;
+			border-bottom-right-radius: 5px;
+			border-bottom-left-radius: 5px;
+		}
+		
+/*--------------AffbarContent---------------*/
+		img{
+			position:absolute;
+			height:25px;
+			width:127px;
+			padding-left:20px;
+			padding-top:5px;
+		}
+		
+		#affbarcontent{
+			margin:0px auto;
+			clear:both;
+			overflow:hidden;
+		}
+		p{
+			margin:11px 0 0 325px;
+			float:left;
+			font-size:13px;
+			color:#fff;
+			text-shadow: 0px 1px 0px #000;
+			font-family: Helvetica, Arial, sans-serif;	
+		}
+		
+/*-----------------Buttons-----------------*/
+
+		#buttons{
+			position:absolute;
+			margin:7px 0 0 620px;
+		}
+		.ordertakeout, .orderdelivery{
+			margin-left:10px;
+			border-top: 1px solid #999999;
+	   		background: #000000;
+			background: -webkit-gradient(linear, left top, left bottom, from(#555555), to(#000000));
+		    background: -webkit-linear-gradient(top, #555555, #000000);
+	   	   	background: -moz-linear-gradient(top, #555555, #000000);
+			background: -ms-linear-gradient(top, #555555, #000000);
+	   		background: -o-linear-gradient(top, #555555, #000000);
+		    padding: 4px 12px;
+	   		-webkit-border-radius: 5px;
+	   		-moz-border-radius: 5px;
+	   		border-radius: 5px;
+	   		-webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+	   		-moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+	   		box-shadow: rgba(0,0,0,1) 0 1px 0;
+	   		text-shadow: rgba(0,0,0,.4) 0 1px 0;
+	   		color: white;
+	   		font-size: 10px;
+	   		font-family: Helvetica, Arial, Sans-Serif;
+	   		text-decoration: none;
+	   		vertical-align: middle;
+	  	}
+		.ordertakeout:hover, .orderdelivery:hover {
+		   	border-top-color: #333333;
+		   	background: #333333;
+		   	color: #ffffff;
+	   	}
+		.ordertakeout:active, .orderdelivery:hover {
+		   	border-top-color: #000000;
+		   	background: #000000;
+	   	}
+		
+/*-------------X---------------*/		
+	
+		#close-affbar-opened {
+			padding-top:5px;
+			padding-bottom:5px;
+			margin-right:30px;
+			float: right;
+			font-size: 22px;
+			font-weight: bold;
+			color:#000;
+			text-shadow: 0px 1px 0px #ffffff;
+			cursor:pointer;
+		}
+		#main {
+			z-index: 0;
+			width:100%;
+			height:100%;
+			position: absolute;
+			background-color: #38B2CE;
+		}
+	</style>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(function (){
+		
+		$('#close-affbar-opened').click(function () {
+			$('#main, #affbar-opened').animate({
+				top: '-=38px'
+			}, 500, 'swing');
+		});
+		
+		$('#affbar-closed').click(function () {
+			$('#main, #affbar-opened').animate({
+				top: '+=38px'
+			}, 500, 'swing');
+		});
+		
+		setTimeout(function() {
+			$('#affbar-closed').click();
+		}, 1000);
+
+	});
+	</script>
+</head>
+
+<body>
+	<div id="affbar-opened">
+		<a href="http://www.eatbmore.com"><img src="eatbmorelogo.png"/></a>
+		<div id="affbarcontent">
+			<p>Order food online from Mother's at EatBmore.com</p>
+				<div id="buttons">
+	      			<a class="ordertakeout" href="#"> Order Takeout</a>
+					<a class="orderdelivery" href="#">Order Delivery</a>
+	    		</div>
+		</div>
+		<div id="close-affbar-opened">&#215;</div>
+	</div>
+	<div id="affbar-closed">affbar-closed</div>
+	<div id="main">
+		main
+	</div>
+</body>
+
+</html>
