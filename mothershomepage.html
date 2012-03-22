@@ -18,6 +18,8 @@
 		-webkit-box-shadow: 0px 2px 0px 0px rgba(1, 1, 1, .3);
 		-moz-box-shadow: 0px 2px 0px 0px rgba(1, 1, 1, .3);
 		box-shadow: 0px 2px 0px 0px rgba(1, 1, 1, .3);
+		text-decoration:none;
+		font-weight:normal;
 	}
 	#tab {
 		z-index: 1;
@@ -38,6 +40,8 @@
 		-moz-box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, .5);
 		box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, .5);
 		cursor:pointer;
+		text-decoration:none;
+		font-weight:normal;
 	}
 	.tabcontent{
 		display:block;
@@ -46,6 +50,8 @@
 		color:#fff;
 		text-shadow: rgba(0,0,0,.7) 0 -1px 0;
 		font-family: Helvetica, Arial, sans-serif;
+		text-decoration:none;
+		font-weight:normal;
 	}
 
 /*--------------AffbarContent---------------*/
@@ -56,18 +62,24 @@
 		width:127px;
 		padding-left:20px;
 		padding-top:5px;
+		text-decoration:none;
+		font-weight:normal;
 	}
 	.tablogo{
 		height:20px;
 		width:100px;
 		margin-top:8px;
 		margin-bottom:2px;
+		text-decoration:none;
+		font-weight:normal;
 	}
 	#affbarcontent{
 		margin:0px auto;
 		clear:both;
 		overflow:hidden;
 		text-align:center;
+		text-decoration:none;
+		font-weight:normal;
 	}
 	.heading{
 		width:100%;
@@ -79,11 +91,15 @@
 		color:#fff;
 		text-shadow: rgba(0,0,0,.7) 0 -1px 0;
 		font-family: Helvetica, Arial, sans-serif;	
+		text-decoration:none;
+		font-weight:normal;
 	}
 
 /*-----------------Buttons-----------------*/
 
-	.ordertakeout, .orderdelivery{
+	#affbarcontent p.heading a {
+		text-decoration:none;
+		font-weight:normal;
 		margin-left:10px;
 		border-top: 1px solid #999999;
    		background: #000000;
@@ -103,27 +119,22 @@
    		color: white;
    		font-size: 10px;
    		font-family: Helvetica, Arial, Sans-Serif;
-   		text-decoration: none;
+   		
   	}
-	.ordertakeout:hover, .orderdelivery:hover {
+	#affbarcontent p.heading a:hover {
 	   	border-top-color: #777777;
 	   	background: #333333;
 	   	color: #ffffff;
+		text-decoration:none;
+		font-weight:normal;
    	}
-	.ordertakeout:active, .orderdelivery:active {
+	#affbarcontent p.heading a:active {
 	   	border-top-color: #555555;
 	   	background: #111111;
 	   	color: #ffffff;
+		text-decoration:none;
+		font-weight:normal;
    	}
-	.ordertakeout:visited, .orderdelivery:visited {
-	   	border-top-color: #555555;
-	   	background: #111111;
-	   	color: #ffffff;
-   	}
-
-	a.ordertakeout, a.orderdelivery{
-	font-weight:normal;
-	}
 
 /*-------------X---------------*/		
 
@@ -148,6 +159,13 @@
 		width:100%;
 		overflow: hidden;
 	}
+	
+	body {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		top: 0;
+	}
 </style>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -156,14 +174,9 @@ $(function (){
 	$('body').prepend("<div id='affbarmover'></div>")
 
 	$('#close').click(function () {
-		$('#affbar').animate({
+		$('body, #affbar').animate({
 			top: '-=38px'
 		}, 500, 'swing');
-		
-		$('#affbarmover').animate({
-			height: '-=38px'
-		}, 500, 'swing');
-		
 	});
 
 	$('#close').click(function () {
@@ -173,14 +186,9 @@ $(function (){
 	});
 
 	$('#tab').click(function () {
-		$('#affbar').animate({
+		$('body, #affbar').animate({
 			top: '+=38px'
 		}, 500, 'swing');
-		
-		$('#affbarmover').animate({
-			height: '+=38px'
-		}, 500, 'swing');
-		
 	});
 	
 	$('#tab').click(function () {
@@ -188,9 +196,6 @@ $(function (){
 			top: '-=58px'
 		}, 500, 'swing');
 	});
-
-
-
 });
 </script>
 
