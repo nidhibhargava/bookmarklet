@@ -52,7 +52,7 @@
 				font-weight:normal;
 			}
 
-	/*--------------AffbarContent---------------*/
+		/*--------------AffbarContent---------------*/
 
 			.barlogo{
 				position:absolute;
@@ -93,7 +93,7 @@
 				font-weight:normal;
 			}
 
-	/*-----------------Buttons-----------------*/
+		/*-----------------Buttons-----------------*/
 
 			#affbarcontent p.heading a {
 				text-decoration:none;
@@ -117,7 +117,7 @@
 		   		color: white;
 		   		font-size: 10px;
 		   		font-family: Helvetica, Arial, Sans-Serif;
-		   		
+
 		  	}
 			#affbarcontent p.heading a:hover {
 			   	border-top-color: #777777;
@@ -134,7 +134,7 @@
 				font-weight:normal;
 		   	}
 
-	/*-------------X---------------*/		
+		/*-------------X---------------*/		
 
 			#close {
 				position:absolute;
@@ -157,6 +157,13 @@
 				width:100%;
 				overflow: hidden;
 			}
+
+			body {
+				position: absolute;
+				left: 0;
+				width: 100%;
+				top: 0;
+			}
 		</style>
 
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -165,14 +172,9 @@
 			$('body').prepend("<div id='affbarmover'></div>")
 
 			$('#close').click(function () {
-				$('#affbar').animate({
+				$('body, #affbar').animate({
 					top: '-=38px'
 				}, 500, 'swing');
-				
-				$('#affbarmover').animate({
-					height: '-=38px'
-				}, 500, 'swing');
-				
 			});
 
 			$('#close').click(function () {
@@ -182,24 +184,16 @@
 			});
 
 			$('#tab').click(function () {
-				$('#affbar').animate({
+				$('body, #affbar').animate({
 					top: '+=38px'
 				}, 500, 'swing');
-				
-				$('#affbarmover').animate({
-					height: '+=38px'
-				}, 500, 'swing');
-				
 			});
-			
+
 			$('#tab').click(function () {
 				$('#tab').animate({
 					top: '-=58px'
 				}, 500, 'swing');
 			});
-
-
-
 		});
 		</script>
 
