@@ -26,7 +26,7 @@
 		height: 55px;
 		width: 140px;
 		position: fixed;
-		top: -65px;
+		top: -61px;
 		right: 30px;
 		background-color: red;
 		border:3px solid white;
@@ -197,7 +197,7 @@ $(function (){
 
 	$('#close').click(function () {
 		$('#tab').animate({
-			top: '+=120px'
+			top: '+=58px'
 		}, 500, 'swing');
 	});
 
@@ -214,7 +214,9 @@ $(function (){
 	});
 	
 	setTimeout(function() {
-		$('#tab').click();
+		$('body, #affbar').animate({
+			top: '+=38px'
+		}, 500, 'swing');
 	}, 1000);
 });
 </script>
