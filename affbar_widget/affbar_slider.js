@@ -26,7 +26,9 @@ $(function (){
 	});
 	
 	setTimeout(function() {
-		$('#tab').click();
+		$('body, #affbar').animate({
+			top: '+=38px'
+		}, 500, 'swing');
 	}, 1000);
 	
 });
