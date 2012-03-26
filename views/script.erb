@@ -1,0 +1,99 @@
+(function(){
+
+  var jquery;  
+  /******** Load jQuery if not present *********/
+  if (window.jQuery === undefined || window.jQuery.fn.jquery !== '1.4.2') {
+      var script_tag = document.createElement('script');
+      script_tag.setAttribute("type","text/javascript");
+      script_tag.setAttribute("src",
+          "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js");
+      if (script_tag.readyState) {
+        script_tag.onreadystatechange = function () { // For old versions of IE
+            if (this.readyState == 'complete' || this.readyState == 'loaded') {
+                scriptLoadHandler();
+            }
+        };
+      } else { // Other browsers
+        script_tag.onload = scriptLoadHandler;
+      }
+      // Try to find the head, otherwise default to the documentElement
+      (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
+  } else {
+      // The jQuery version on the window is the one we want to use
+      jQuery = window.jQuery;
+      main();
+  }
+
+
+  /******** Called once jQuery has loaded ******/
+  function scriptLoadHandler() {
+      // Restore $ and window.jQuery to their previous values and store the
+      // new jQuery in our local jQuery variable
+      jQuery = window.jQuery.noConflict(true);
+      // Call our main function
+      main(); 
+  }
+  
+  function main() { 
+    jQuery(document).ready(function($) { 
+        // We can use jQuery here
+        $('head').append('<link href="http://localhost:9393/style.css" rel="stylesheet" type="text/css">');
+        
+        var markup = ''
+        markup += '<div id="affbarmover"></div>'
+        markup += '<div id="affbar">'
+        markup += '<div id="affbarcontent">'
+        markup += '<span id="eatbmore-logo"><a href="http://www.eatbmore.com" target="_blank"><img src="http://localhost:9393/eatbmorelogo.png" alt="EatBmore" /></a></span>'
+        markup += '<p class="heading">Order food online from Mother\'s at EatBmore.com'
+        markup += '<a class="orderdelivery" href="https://eatbmore.localupmenus.com/order-online-mothers-federal-hill-grille-federal-hill-american/step1.aspx">Order Delivery</a>'
+        markup += '<a class="ordertakeout" href="https://eatbmore.localupmenus.com/order-online-mothers-federal-hill-grille-federal-hill-american/step1.aspx"> Order Takeout</a>'
+        markup += '</p>'
+        markup += '<div id="close">&#215;</div>'
+        markup += '</div></div>'
+        markup += '<div id="tab">'
+        markup += '<p class="tabcontent"><span><img class="tablogo" src="http://localhost:9393/eatbmorelogo.png"/></span><span>Order Online</span></p>'
+        markup += '</div>'
+
+        $('body').prepend(markup);
+
+        $('#close').click(function () {
+	        $('body, #affbar').animate({
+		        top: '-=38px'
+	        }, 500, 'swing');
+        });
+
+        $('#close').click(function () {
+	        $('#tab').animate({
+		        top: '+=58px'
+	        }, 500, 'swing');
+        });
+
+        $('#tab').click(function () {
+	        $('body, #affbar').animate({
+		        top: '+=38px'
+	        }, 500, 'swing');
+        });
+
+        $('#tab').click(function () {
+	        $('#tab').animate({
+		        top: '-=58px'
+	        }, 500, 'swing');
+        });
+
+        setTimeout(function() {
+	        $('body, #affbar').animate({
+		        top: '+=38px'
+	        }, 500, 'swing');
+        }, 1000);
+        });
+    }
+
+  
+     
+  alert("Hi <%=@name%>")
+
+})();
+
+
+
+

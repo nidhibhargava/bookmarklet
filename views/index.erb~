@@ -1,0 +1,198 @@
+<!-- <!DOCTYPE html>DON'T FORGET TO REMOVE THIS. IT'S JUST FOR SYNTAX HIGHLIGHTING -->
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+			<div class="row">
+				<a class="brand" href="/?p=1&s=<%=@model[:s]%>&q=">
+					Call Dashboard
+				</a>
+				<div class="pull-right">
+					<form class="navbar-search">
+						<input type="text" class="input-large search-query" placeholder="Search..." value="<%=@model[:q]%>">
+						<a class="btn btn-search"><i class="icon-search"></i></a>
+					</form>
+					<a class="btn btn-primary btn-new btn-large " data-toggle="modal" href="#myModal">
+						<i class="icon-phone icon-white"></i> Test Call
+					</a>
+				</div>
+			</div>
+  	</div>
+  </div>
+</div>
+
+<div class="modal" id="myModal" style="display: none;">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Initiate Test Notification Routine</h3>
+  </div>
+  <div class="modal-body">
+		<form class="form form-horizontal" method="POST" action="/?p=1&s=<%=@model[:s]%>&q=<%=@model[:q]%>">
+			<div class="control-group">
+        <label class="control-label" for="input01">Phone Number</label>
+        <div class="controls">
+          <input type="text" class="input-large" id="input01" name="restaurant_phone_number">
+        </div>
+      </div>
+			<input type="hidden" name="order_number" value="00000">
+			<input type="hidden" name="territory_name" value="Test Territory">
+			<input type="hidden" name="restaurant_name" value="Test Restaurant">
+			<input type="hidden" name="text_address" value="">
+			<input type="hidden" name="order_type" value="email">
+			<input type="hidden" name="restaurant_time_offset" value="0">
+		</form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success modal-submit">
+			<i class="icon-phone icon-white"></i> Place Call
+		</button>
+  </div>
+</div>
+	
+<div class="container">
+	<div class="pagination pagination-right">
+		<div class="pull-left">
+			<h4>
+				Displaying <%=@model[:results].length == 0 ? 0: (@model[:p]-1)*150 + 1%> - <%=(@model[:p]-1)*150 + @model[:results].length%> of <%=@model[:full]%> results<%if not @model[:q] == ''%> for "<%=@model[:q]%>"<%end%>.
+			</h4>
+		</div>
+
+		<div class="pull-left fail-toggle">
+			<label class="checkbox">
+				<input type="checkbox" id="optionsCheckbox" value="option1" <%=@model[:s] == '0' ? '' : 'checked'%>>
+				 Also show <span class="label label-success">successes</span>
+			</label>
+		</div>
+
+		<ul>
+			<li class="<%=@model[:left] ? '' : 'disabled'%>"><a href="/?p=1&s=<%=@model[:s]%>&q=<%=@model[:q]%>">&#171 Newest</a></li>
+		<%(((-2*(@model[:left] ? 1 : 0) + (@model[:right] && @model[:left] ? 1 : 0))..(2*(@model[:right] ? 1 : 0) - (@model[:right] && @model[:left] ? 1 : 0))).select { |i| i <= @model[:total] - @model[:p]  && i >= 1 - @model[:p]}).each do |j|%>
+			<li class="<%=j == 0 ? 'active' : ''%>"><a href="/?p=<%=@model[:p] + j%>&s=<%=@model[:s]%>&q=<%=@model[:q]%>"><%=@model[:p] + j%></a></li>
+		<%end%>
+			<li class="<%=@model[:right] ? '' : 'disabled'%>"><a href="/?p=<%=@model[:total]%>&s=<%=@model[:s]%>&q=<%=@model[:q]%>">Oldest &#187</a></li>
+		</ul>
+	</div>
+
+  <table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>Order Number</th>
+				<th>Call Time</th>
+				<th>Call Status</th>
+				<th>Call Attempts</th>
+				<th>Email Status</th>
+				<th>Territory</th>
+				<th>Restaurant</th>
+				<th>Order Type</th>
+				<th>Phone Number</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+		<%@model[:results].each do |row|%>	
+			<tr>
+				<td class="order_number"><%=row["order_number"]%></td>
+				<td><%=Time.at(row["time_of_call"].to_i).to_time.in_time_zone(row["restaurant_time_offset"]).strftime('%-l:%M%p %Z %-m/%-d')%></td>
+				<td>
+				<%if ((row['call_status'] || 'none').downcase == 'success')%>
+					<span class="label label-success">
+				<%elsif ((row['call_status'] || 'none').downcase == 'no answer' || (row['call_status'] || 'none').downcase == 'error')%>
+					<span class="label label-important">
+				<%elsif ((row['call_status'] || 'none').downcase == 'hung up')%>
+					<span class="label label-warning">
+				<%elsif ((row['call_status'] || 'none').downcase == 'calling')%>
+					<span class="label label-info">
+				<%else%>
+					<span class="label">
+				<%end%>
+						<%=(row['call_status'] || 'none')%>
+					</span>
+				</td>
+				<td><%=row["call_attempts"]%></td>
+				<td><%=row["email_status"]%></td>
+				<td><%=row["territory_name"]%></td>
+				<td><%=row["restaurant_name"]%></td>
+				<td><%=row["order_type"]%></td>
+				<td><form method="POST" action="/?p=1&s=<%=@model[:s]%>&q=<%=@model[:q]%>">
+				<%if ((row['call_status'] || 'none').downcase == 'success')%>
+					<label class="phone-number"><%=row['restaurant_phone_number']%></label>
+				<%else%>
+					<input class="input-small phone-number" type="text" name="restaurant_phone_number" value="<%=row['restaurant_phone_number']%>">
+				<%end%>
+					<input type="hidden" name="order_number" value="<%=row['order_number']%>">
+				</form></td>
+				<td class="action"><button class="btn btn-action <%=((row['call_status'] || 'none').downcase == 'success' || (row['routine'] || 'none').downcase == 'active' ? 'disabled' : '')%>">
+				<%if ((row['call_status'] || 'none').downcase == 'success' || (row['routine'] || 'none').downcase == 'active')%>
+				<%else%>
+					<i class="icon-phone"></i>
+				<%end%>
+					<%=((row['routine'] || 'none').downcase == 'active' ? 'Sending' : ((row['call_status'] || 'none').downcase == 'success' ? 'Sent' : 'Resend'))%>
+				</button></td>
+			</tr>
+		<%end%>
+		</tbody>
+  </table>
+
+	<div class="pagination pagination-right">
+		<ul>
+			<li class="<%=@model[:left] ? '' : 'disabled'%>"><a href="/?p=1&s=<%=@model[:s]%>&q=<%=@model[:q]%>">&#171 Newest</a></li>
+		<%(((-2*(@model[:left] ? 1 : 0) + (@model[:right] && @model[:left] ? 1 : 0))..(2*(@model[:right] ? 1 : 0) - (@model[:right] && @model[:left] ? 1 : 0))).select { |i| i <= @model[:total] - @model[:p]  && i >= 1 - @model[:p]}).each do |j|%>
+			<li class="<%=j == 0 ? 'active' : ''%>"><a href="/?p=<%=@model[:p] + j%>&s=<%=@model[:s]%>&q=<%=@model[:q]%>"><%=@model[:p] + j%></a></li>
+		<%end%>
+			<li class="<%=@model[:right] ? '' : 'disabled'%>"><a href="/?p=<%=@model[:total]%>&s=<%=@model[:s]%>&q=<%=@model[:q]%>">Oldest &#187</a></li>
+		</ul>
+	</div>
+</div> <!-- /container -->
+	
+<script>
+	$(function () {
+
+		$('.btn-action').click(function () {
+			$(this).parentsUntil('tbody').find('form').submit();
+		});
+
+		$('.modal-submit').click(function () {
+			$('.modal form').submit();
+		});
+
+		$('.btn-search').click(function () {
+			query = $(this).prev().val();
+			$(this).attr('href', '/?p=1&s=<%=@model[:s]%>&q=' + query);
+		});
+
+		$('.search-query').keydown(function (e) {
+			var code = (e.keyCode ? e.keyCode : e.which);
+			if (code == 13) {
+				e.preventDefault();
+				query = $(this).val();
+				window.location.href = '/?p=1&s=<%=@model[:s]%>&q=' + query;
+			}
+		});
+
+		$('tbody > tr').hover(
+			function () { $(this).addClass('hover'); },
+			function () { $(this).removeClass('hover'); }
+		);
+
+		$('.btn-action').hover(
+			function () {
+				$(this).addClass('btn-success')
+					.find('.icon-phone').addClass('icon-white');
+			},
+			function () {
+				$(this).removeClass('btn-success')
+					.find('.icon-phone').removeClass('icon-white');
+			}
+		);
+
+		$('.btn-action.disabled').off();
+
+		$(':checkbox').click(function () {
+			checked = $(this).is(':checked') ? '1' : '0';
+			window.location.href = '/?p=1&s=' + checked + '&q=<%=@model[:q]%>';
+		});
+
+	});
+
+	
+</script>
