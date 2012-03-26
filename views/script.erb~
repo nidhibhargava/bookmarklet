@@ -45,13 +45,13 @@
         markup += '<div id="affbarcontent">'
         markup += '<span id="eatbmore-logo"><a href="http://www.eatbmore.com" target="_blank"><img src="http://localhost:9393/eatbmorelogo.png" alt="EatBmore" /></a></span>'
         markup += '<p class="heading">Order food online from Mother\'s at EatBmore.com'
-        markup += '<a class="orderdelivery" href="https://eatbmore.localupmenus.com/order-online-mothers-federal-hill-grille-federal-hill-american/step1.aspx">Order Delivery</a>'
-        markup += '<a class="ordertakeout" href="https://eatbmore.localupmenus.com/order-online-mothers-federal-hill-grille-federal-hill-american/step1.aspx"> Order Takeout</a>'
+        markup += '<a class="orderdelivery" href="<%=@restaurant_url%>">Order Delivery</a>'
+        markup += '<a class="ordertakeout" href="@restaurant_url"> Order Takeout</a>'
         markup += '</p>'
         markup += '<div id="close">&#215;</div>'
         markup += '</div></div>'
         markup += '<div id="tab">'
-        markup += '<p class="tabcontent"><span><img class="tablogo" src="http://localhost:9393/eatbmorelogo.png"/></span><span>Order Online</span>s</p>'
+        markup += '<p class="tabcontent"><span><img class="tablogo" src="http://localhost:9393/eatbmorelogo.png"/></span><span>Order Online</span></p>'
         markup += '</div>'
 
         $('body').prepend(markup);
@@ -87,11 +87,7 @@
         }, 1000);
         });
     }
-
-  
-     
   alert("Hi <%=@name%>")
-
 })();
 
 

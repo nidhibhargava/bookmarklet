@@ -6,11 +6,11 @@ set :public_folder, "#{File.dirname(__FILE__)}/public"
 
 get '/:name/script.js' do
   
-  if ENV.has_key?("DEPLOY_ENV")
-    @url_path = "http://affbar-bookmarklet.herokuapp.com"
-  else
-    @url_path = "http://localhost:9393"
-  end  
+  #if ENV.has_key?("")
+
+  #else
+  
+  #end  
   
   @restaurant_url = "https://eatbmore.localupmenus.com/order-online-mothers-federal-hill-grille-federal-hill-american/step1.aspx" 
         
