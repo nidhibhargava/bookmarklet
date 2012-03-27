@@ -1,4 +1,6 @@
 require './app.rb'
+require 'resque'
+require 'resque/server'
 
 if ENV.has_key?("REDISTOGO_URL")
   uri = URI.parse(ENV["REDISTOGO_URL"])
@@ -6,6 +8,7 @@ if ENV.has_key?("REDISTOGO_URL")
 end
 
 run Rack::URLMap.new \
-  "/"       => Sinatra::Application
+  "/"       => Sinatra::Application,
+  "/resque" => Resque::Server.new
 
 $stdout.sync = true
