@@ -40,7 +40,7 @@
 		height: 55px;
 		width: 140px;
 		position: fixed;
-		top: -61px;
+		top: -66px;
 		right: 30px;
 		background: red;
 		border:3px solid white;
@@ -119,7 +119,7 @@
 
 /*-----------------Buttons-----------------*/
 
-	#affbar #affbarcontent p.heading a {
+	#affbar #affbarcontent p.heading a.btn-active{
 		margin-left:10px;
 		border-top: 1px solid #999999;
    		background: #000000;
@@ -140,18 +140,32 @@
    		font-size: 11px;
    		
   	}
-	#affbar #affbarcontent p.heading a:hover {
+	#affbar #affbarcontent p.heading a.btn-active:hover {
 	   	border-top-color: #777777;
 	   	background: #333333;
 	   	color: #ffffff;
 		text-decoration:none;
    	}
-	#affbar #affbarcontent p.heading a:active {
+	#affbar #affbarcontent p.heading a.btn-active:active {
 	   	border-top-color: #555555;
 	   	background: #111111;
 	   	color: #ffffff;
 		text-decoration:none;
    	}
+
+	#affbar #affbarcontent p.heading a.btn-inactive, a.btn-inactive:hover {
+		margin-left:10px;
+		border:1px #000000;
+   		background: #555555;
+	    padding: 4px 12px;
+   		-webkit-border-radius: 5px;
+   		-moz-border-radius: 5px;
+   		border-radius: 5px;
+   		color: #999999;
+   		font-size: 11px;
+		text-shadow:none;
+		cursor:default;
+	}
 
 /*-------------X---------------*/		
 
@@ -199,7 +213,7 @@ $(function (){
 
 	$('#close').click(function () {
 		$('#affbartab').animate({
-			top: '+=58px'
+			top: '+=63px'
 		}, 500, 'swing');
 	});
 
@@ -211,7 +225,7 @@ $(function (){
 	
 	$('#affbartab').click(function () {
 		$('#affbartab').animate({
-			top: '-=58px'
+			top: '-=63px'
 		}, 500, 'swing');
 	});
 	
@@ -305,8 +319,8 @@ var urlHome="http://www.mobilescoops.com/";
 	<div id="affbarcontent">
 		<span id="eatbmore-logo"><a href="http://www.eatbmore.com" target="_blank"><img src="eatbmorelogo.png" alt="EatBmore" /></a></span>
 		<p class="heading">Order food online from Mother's at EatBmore.com
-			<a class="orderdelivery" href="https://eatbmore.localupmenus.com/order-online-mothers-federal-hill-grille-federal-hill-american/step1.aspx">Order Delivery</a>
-			<a class="ordertakeout" href="https://eatbmore.localupmenus.com/order-online-mothers-federal-hill-grille-federal-hill-american/step1.aspx"> Order Takeout</a>
+			<a class="btn-active" href="https://eatbmore.localupmenus.com/order-online-mothers-federal-hill-grille-federal-hill-american/step1.aspx">Order Delivery</a>
+			<a class="btn-inactive" href="https://eatbmore.localupmenus.com/order-online-mothers-federal-hill-grille-federal-hill-american/step1.aspx">Order Takeout</a>
 		</p>
 		<div id="close">&#215;</div>
 	</div>
