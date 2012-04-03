@@ -45,8 +45,8 @@
         markup += '<div id="affbarcontent">'
         markup += '<span id="eatbmore-logo"><a href="http://www.eatbmore.com" target="_blank"><img src="<%=@url_path%>/eatbmorelogo.png" alt="EatBmore" /></a></span>'
         markup += '<p class="heading">Order food online from Mother\'s at EatBmore.com'
-        markup += '<a class="orderdelivery" href="<%=@restaurant_url%>">Order Delivery</a>'
-        markup += '<a class="ordertakeout" href="@restaurant_url"> Order Takeout</a>'
+        markup += '<a class="btn-active" href="<%=@restaurant_url%>">Order Delivery</a>'
+        markup += '<a class="btn-inactive" href="<%=@restaurant_url%>"> Order Takeout</a>'
         markup += '</p>'
         markup += '<div id="close">&#215;</div>'
         markup += '</div></div>'
@@ -57,35 +57,34 @@
         $('body').prepend(markup);
 
         $('#close').click(function () {
-	        $('body, #affbar').animate({
-		        top: '-=38px'
-	        }, 500, 'swing');
-        });
+			$('body, #affbar').animate({
+				top: '-=38px'
+			}, 500, 'swing');
+		});
 
-        $('#close').click(function () {
-	        $('#affbartab').animate({
-		        top: '+=58px'
-	        }, 500, 'swing');
-        });
+		$('#close').click(function () {
+			$('#affbartab').animate({
+				top: '+=63px'
+			}, 500, 'swing');
+		});
 
-        $('#affbartab').click(function () {
-	        $('body, #affbar').animate({
-		        top: '+=38px'
-	        }, 500, 'swing');
-        });
+		$('#affbartab').click(function () {
+			$('body, #affbar').animate({
+				top: '+=38px'
+			}, 500, 'swing');
+		});
 
-        $('#affbartab').click(function () {
-	        $('#affbartab').animate({
-		        top: '-=58px'
-	        }, 500, 'swing');
-        });
+		$('#affbartab').click(function () {
+			$('#affbartab').animate({
+				top: '-=63px'
+			}, 500, 'swing');
+		});
 
-        setTimeout(function() {
-	        $('body, #affbar').animate({
-		        top: '+=38px'
-	        }, 500, 'swing');
-        }, 1000);
-        });
+		setTimeout(function() {
+			$('body, #affbar').animate({
+				top: '+=38px'
+			}, 500, 'swing');
+		}, 1000);
     
 
       window._gaq = _gaq || [];
