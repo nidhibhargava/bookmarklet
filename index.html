@@ -4,8 +4,24 @@
 
 <head>
 <!-- AFFBAR HEAD STUFF -->
-<link href="affbarreset.css" rel="stylesheet" type="text/css">
+<!-- RESET  <link href="affbarreset.css" rel="stylesheet" type="text/css"> -->
 <style type="text/css">
+	#affbar, #affbartab, #affbartab .tabcontent, #affbar img, #affbar a, #affbartab .tabcontent img, #affbartab .tabcontent a {
+		/*reset*/
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		line-height:100%;
+		vertical-align: baseline;
+		font-weight:normal;
+		text-decoration:none;
+		/*endreset*/
+	}
+	#affbar, #affbartab {
+		font-family: Helvetica, Arial, sans-serif;
+	}
 	#affbar {
 		z-index: 2000;
 		height: 35px;
@@ -18,8 +34,6 @@
 		-webkit-box-shadow: 0px 2px 0px 0px rgba(1, 1, 1, .3);
 		-moz-box-shadow: 0px 2px 0px 0px rgba(1, 1, 1, .3);
 		box-shadow: 0px 2px 0px 0px rgba(1, 1, 1, .3);
-		text-decoration:none;
-		font-weight:normal;
 	}
 	#affbartab {
 		z-index: 1;
@@ -75,8 +89,6 @@
 		width:127px;
 		padding-left:20px;
 		padding-top:5px;
-		text-decoration:none;
-		font-weight:normal;
 	}
 	#affbartab .tablogo{
 		height:20px;
@@ -86,8 +98,7 @@
 		text-decoration:none;
 		font-weight:normal;
 	}
-	#affbar#affbarcontent{
-		/* margin:0px auto; */
+	#affbar #affbarcontent{
 		clear:both;
 		overflow:hidden;
 		text-align:center;
@@ -96,7 +107,11 @@
 		z-index:2001;
 	}
 	#affbar .heading{
-		position:relative;
+		margin:0;
+		padding:0;
+		position:absolute;
+		top:0;
+		left:0;
 		width:100%;
 		text-align:center;
 		line-height:35px;
@@ -105,9 +120,6 @@
 		font-size:13px;
 		color:#fff;
 		text-shadow: rgba(0,0,0,.7) 0 -1px 0;
-		font-family: Helvetica, Arial, sans-serif;	
-		text-decoration:none;
-		font-weight:normal;
 	}
 
 /*-----------------Buttons-----------------*/
@@ -133,7 +145,6 @@
    		text-shadow: rgba(0,0,0,.4) 0 1px 0;
    		color: white;
    		font-size: 11px;
-   		font-family: Helvetica, Arial, Sans-Serif;
    		
   	}
 	#affbar #affbarcontent p.heading a:hover {
@@ -300,7 +311,6 @@ var urlHome="http://www.mobilescoops.com/";
 <!--AFFBAR BODY STUFF-->
 
 <div id="affbar">
-	
 	<div id="affbarcontent">
 		<span id="eatbmore-logo"><a href="http://www.eatbmore.com" target="_blank"><img src="eatbmorelogo.png" alt="EatBmore" /></a></span>
 		<p class="heading">Order food online from Mother's at EatBmore.com
@@ -309,9 +319,7 @@ var urlHome="http://www.mobilescoops.com/";
 		</p>
 		<div id="close">&#215;</div>
 	</div>
-	
 </div>
-
 <div id="affbartab">
 	<p class="tabcontent"><span><img class="tablogo" src="eatbmorelogo.png"/></span><span>Order Online</span></p>
 </div>
