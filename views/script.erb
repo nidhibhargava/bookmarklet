@@ -50,7 +50,7 @@
         markup += '</p>'
         markup += '<div id="close">&#215;</div>'
         markup += '</div></div>'
-        markup += '<div id="tab">'
+        markup += '<div id="affbartab">'
         markup += '<p class="tabcontent"><span><img class="tablogo" src="<%=@url_path%>/eatbmorelogo.png"/></span><span>Order Online</span></p>'
         markup += '</div>'
 
@@ -63,19 +63,19 @@
         });
 
         $('#close').click(function () {
-	        $('#tab').animate({
+	        $('#affbartab').animate({
 		        top: '+=58px'
 	        }, 500, 'swing');
         });
 
-        $('#tab').click(function () {
+        $('#affbartab').click(function () {
 	        $('body, #affbar').animate({
 		        top: '+=38px'
 	        }, 500, 'swing');
         });
 
-        $('#tab').click(function () {
-	        $('#tab').animate({
+        $('#affbartab').click(function () {
+	        $('#affbartab').animate({
 		        top: '-=58px'
 	        }, 500, 'swing');
         });
@@ -89,7 +89,7 @@
     
 
       window._gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-30396701-1']);
+      _gaq.push(['_setAccount', 'UA-30283326-1']);
       _gaq.push(['_trackPageview']);
 
       (function() {

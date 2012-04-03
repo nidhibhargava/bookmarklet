@@ -13,7 +13,7 @@
 		text-decoration:none;
 		font-weight:normal;
 	}
-	#tab {
+	#affbartab {
 		z-index: 1;
 		height: 55px;
 		width: 140px;
@@ -35,7 +35,7 @@
 		text-decoration:none;
 		font-weight:normal;
 	}
-	.tabcontent{
+	#affbartab .tabcontent{
 		display:block;
 		text-align:center;
 		font-size:17px;
@@ -45,24 +45,24 @@
 		text-decoration:none;
 		font-weight:normal;
 	}
-	.tabcontent span {
+	#affbartab .tabcontent span {
 		display:block;
 		text-align:center;
 	}
 
 /*--------------AffbarContent---------------*/
 
-	#eatbmore-logo {
+	#affbar #eatbmore-logo {
 		position:absolute;
 		top:0;
 		left:0;
 		z-index:2005;
 	}
-	#eatbmore-logo a {
+	#affbar #eatbmore-logo a {
 		display:block;
 	}
-	#eatbmore-logo img {
-		
+	#affbar #eatbmore-logo img {
+
 		height:25px;
 		width:127px;
 		padding-left:20px;
@@ -70,7 +70,7 @@
 		text-decoration:none;
 		font-weight:normal;
 	}
-	.tablogo{
+	#affbartab .tablogo{
 		height:20px;
 		width:100px;
 		margin-top:8px;
@@ -78,7 +78,7 @@
 		text-decoration:none;
 		font-weight:normal;
 	}
-	#affbarcontent{
+	#affbar#affbarcontent{
 		/* margin:0px auto; */
 		clear:both;
 		overflow:hidden;
@@ -87,7 +87,7 @@
 		font-weight:normal;
 		z-index:2001;
 	}
-	.heading{
+	#affbar .heading{
 		position:relative;
 		width:100%;
 		text-align:center;
@@ -104,7 +104,7 @@
 
 /*-----------------Buttons-----------------*/
 
-	#affbarcontent p.heading a {
+	#affbar #affbarcontent p.heading a {
 		text-decoration:none;
 		font-weight:normal;
 		margin-left:10px;
@@ -128,14 +128,14 @@
    		font-family: Helvetica, Arial, Sans-Serif;
    		
   	}
-	#affbarcontent p.heading a:hover {
+	#affbar #affbarcontent p.heading a:hover {
 	   	border-top-color: #777777;
 	   	background: #333333;
 	   	color: #ffffff;
 		text-decoration:none;
 		font-weight:normal;
    	}
-	#affbarcontent p.heading a:active {
+	#affbar #affbarcontent p.heading a:active {
 	   	border-top-color: #555555;
 	   	background: #111111;
 	   	color: #ffffff;
@@ -145,7 +145,7 @@
 
 /*-------------X---------------*/		
 
-	#close {
+	#affbar #close {
 		position:absolute;
 		top:0px;
 		right:5px;
@@ -167,7 +167,7 @@
 		width:100%;
 		overflow: hidden;
 	}
-	
+
 	body {
 		position: absolute;
 		left: 0;
